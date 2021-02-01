@@ -1,5 +1,5 @@
 .App {
-  min-height: 100vh;
+  min-height: 100%;
   text-align: center;
   margin-top: 10px;
 }
@@ -7,6 +7,6 @@
 iframe {
   display: block;
   border: none;
-  height: 100vh;
+  height: 91vh;
   width: 100vw;
 }

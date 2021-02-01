@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-conorwhytebase-dev-00635-authRole",
+            "UnauthRoleArn": "arn:aws:iam::744962777212:role/amplify-conorwhytebase-dev-00635-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::744962777212:role/amplify-conorwhytebase-dev-00635-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-conorwhytebase-dev-00635-deployment",
+            "UnauthRoleName": "amplify-conorwhytebase-dev-00635-unauthRole",
+            "StackName": "amplify-conorwhytebase-dev-00635",
+            "StackId": "arn:aws:cloudformation:eu-west-1:744962777212:stack/amplify-conorwhytebase-dev-00635/5a908090-6421-11eb-ae7c-0ab8989ea817",
+            "AmplifyAppId": "dkiiv1pjlauzr"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "dkiiv1pjlauzr",
+                    "type": "cicd"
+                }
+            }
+        }
+    }
+}

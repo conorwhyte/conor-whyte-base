@@ -1,3 +1,4 @@
+const HOME = '';
 const PROJECTS = 'projects';
 const CLEANING_SCHEDULE = 'clean';
 const MOVIES = 'movies';
@@ -6,6 +7,10 @@ const ESTIMATE = 'estimate';
 const NOTEPAD = 'notepad';
 
 export const NAV_CONTENT = [
+    {
+        text: 'Home',
+        route: HOME,
+    },
     {
         text: 'Projects',
         route: PROJECTS,
@@ -33,6 +38,7 @@ export const NAV_CONTENT = [
 ];
 
 export const BODY_URL_MAP = {
+    [HOME]: 'www',
     [PROJECTS]: 'home',
     [CLEANING_SCHEDULE]: CLEANING_SCHEDULE,
     [MOVIES]: MOVIES,

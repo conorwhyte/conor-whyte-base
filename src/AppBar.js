@@ -67,7 +67,7 @@ const Header = ({open = false, handleDrawerOpen, setDarkMode}) => {
             className={clsx(classes.appBar, {
                 [classes.appBarShift]: open,
             })}
-            color="inherit"
+            color="primary"
         >
             <Toolbar>
                 <IconButton
@@ -90,9 +90,9 @@ const Header = ({open = false, handleDrawerOpen, setDarkMode}) => {
                     )}
                 </Breadcrumbs>
                 
-                <IconButton onClick={setDarkMode} className={classes.darkModeToggle}>
+                {/* <IconButton onClick={setDarkMode} className={classes.darkModeToggle}>
                     <LightModeIcon />
-                </IconButton>
+                </IconButton> */}
             </Toolbar>
         </AppBar>
     );

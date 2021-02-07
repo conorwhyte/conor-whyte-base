@@ -40,10 +40,17 @@ const App = () => {
     () =>
       createMuiTheme({
         palette: {
-          type: darkMode ? 'dark' : 'light',
+          type: 'dark',
+          primary: {
+            main: '#202020',
+            dark: '#202020',
+          },
+          background: {
+            paper: '#202020',
+          }
         },
       }),
-    [darkMode],
+    [],
   );
 
   return (

@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { NAV_CONTENT } from './constants';
 import IconButton from '@material-ui/core/IconButton';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -48,9 +49,15 @@ const SideDrawer = ({open = false, handleDrawerClose, theme}) => {
             </div>
             <Divider />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemText primary={text} />
+                {NAV_CONTENT.map((item) => (
+                    <ListItem 
+                        button 
+                        key={item.text} 
+                        component="a" 
+                        href={`#${item.route}`} 
+                        onClick={handleDrawerClose}
+                    >
+                        <ListItemText primary={item.text} />
                     </ListItem>
                 ))}
             </List>

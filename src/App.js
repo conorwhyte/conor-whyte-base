@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashRouter } from "react-router-dom";
 import Body from './Body';
 import SideDrawer from './Drawer';
 import Header from './AppBar';
@@ -46,19 +47,21 @@ const App = () => {
   );
 
   return (
-    <ThemeProvider theme={darkModeTheme}>
-      <div className={classes.root}>
-        <CssBaseline />
-        <Header 
-          open={open} 
-          handleDrawerOpen={handleDrawerOpen} 
-          setDarkMode={setMode} 
-        />
-        
-        <SideDrawer open={open} theme={theme} handleDrawerClose={handleDrawerClose} />
-        <Body open={open} />
-      </div>
-    </ThemeProvider>
+    <HashRouter hashType='noslash' basename='/'>
+      <ThemeProvider theme={darkModeTheme}>
+        <div className={classes.root}>
+          <CssBaseline />
+          <Header 
+            open={open} 
+            handleDrawerOpen={handleDrawerOpen} 
+            setDarkMode={setMode} 
+          />
+          
+          <SideDrawer open={open} theme={theme} handleDrawerClose={handleDrawerClose} />
+          <Body open={open} />
+        </div>
+      </ThemeProvider>
+    </HashRouter>
   );
 }
 

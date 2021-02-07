@@ -1,3 +1,5 @@
+import { useState, useEffect, useCallback } from 'react';
+import { NAV_CONTENT } from './constants';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -40,10 +42,24 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = ({open = false, handleDrawerOpen, setDarkMode}) => {
     const classes = useStyles();
+    const [ breadcrumb, setBreadcrumb ] = useState();
 
-    const handleClick = () => {
-        return null;
-    };
+    const setBreadcrumbText = useCallback(() => {
+        const currentHash = window.location.hash;
+        const [, routeText] = currentHash.split('#');
+        const navItem = NAV_CONTENT.find(({route}) => route === routeText);
+
+        setBreadcrumb(navItem); 
+    }, []);
+
+    useEffect(() => {
+        setBreadcrumbText();
+        window.addEventListener("hashchange", setBreadcrumbText);
+        
+        return () => {
+            window.removeEventListener("hashchange", setBreadcrumbText);
+        };
+    }, [setBreadcrumbText]);
 
     return (
         <AppBar
@@ -64,12 +80,14 @@ const Header = ({open = false, handleDrawerOpen, setDarkMode}) => {
                     <MenuIcon />
                 </IconButton>
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-                    <Link color="inherit" href="/" onClick={handleClick}>
+                    <Link color="inherit" href="/">
                         Conor Whyte
                     </Link>
-                    <Link color="inherit" href="/getting-started/installation/" onClick={handleClick}>
-                        Projects
-                    </Link>
+                    {!!breadcrumb && (
+                        <Link color="inherit" href={`#${breadcrumb.route}`}>
+                            {breadcrumb.text}
+                        </Link>
+                    )}
                 </Breadcrumbs>
                 
                 <IconButton onClick={setDarkMode} className={classes.darkModeToggle}>

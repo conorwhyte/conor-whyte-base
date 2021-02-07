@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import { BODY_URL_MAP } from './constants';
+import { useState, useEffect, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
@@ -24,6 +26,23 @@ const useStyles = makeStyles((theme) => ({
 
 const Main = ({open = false}) => {
     const classes = useStyles();
+    const [url, setUrlBase] = useState('home');
+
+    const setUrl = useCallback(() => {
+      const currentHash = window.location.hash;
+      const [, routeText] = currentHash.split('#');
+       
+      setUrlBase(BODY_URL_MAP[routeText]); 
+    }, []);
+
+    useEffect(() => {
+        setUrl();
+        window.addEventListener("hashchange", setUrl);
+        
+        return () => {
+            window.removeEventListener("hashchange", setUrl);
+        };
+    }, [setUrl]);
 
     return (
         <main
@@ -32,7 +51,7 @@ const Main = ({open = false}) => {
             })}
         >
             <div className="App">
-                <iframe title='home-conorwhyte' src="https://home.conorwhyte.com/" />
+                <iframe title='home-conorwhyte' src={`https://${url || 'www'}.conorwhyte.com/`} />
             </div>
         </main>
     );
